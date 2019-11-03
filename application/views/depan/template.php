@@ -19,8 +19,22 @@
     <link rel="stylesheet" href="<?php echo base_url().'theme/css/slick.css'?>">
     <link rel="stylesheet" href="<?php echo base_url().'theme/css/slick-theme.css'?>">
     <link rel="stylesheet" href="<?php echo base_url().'theme/css/owl.carousel.min.css'?>">
+    <link href="<?php echo base_url().'theme/css/dataTables.bootstrap4.min.css'?>" rel="stylesheet">
     <!-- Main CSS -->
     <link href="<?php echo base_url().'theme/css/style.css'?>" rel="stylesheet">
+     <!--Social Share-->
+     <link href="<?php echo base_url().'theme/css/jssocials.css'?>" rel="stylesheet">
+    <link href="<?php echo base_url().'theme/css/jssocials-theme-flat.css'?>" rel="stylesheet">
+    <style>
+    	.sharePopup{
+    		font-size: 11px;
+    	}
+      .sharePopup a{
+    		font-size: 11px;
+        color: #fff;
+        text-decoration: none;
+    	}
+    </style>
     <?php
         function limit_words($string, $word_limit){
             $words = explode(" ",$string);
@@ -47,12 +61,12 @@
                         </div>
                     </div>
                     <div class="header-top_login2">
-                        <a href="<?php echo site_url('contact');?>">Hubungi Kami</a>
+                        <a href="<?php echo site_url('kontak');?>">Hubungi Kami</a>
                     </div>
                 </div>
                 <div class="col-xs-6 col-sm-4 col-md-2">
                     <div class="header-top_login mr-sm-3">
-                        <a href="<?php echo site_url('contact');?>">Hubungi Kami</a>
+                        <a href="<?php echo site_url('kontak');?>">Hubungi Kami</a>
                     </div>
                 </div>
             </div>
@@ -110,7 +124,7 @@
                                     <a class="nav-link" href="<?php echo site_url('galeri');?>">Galeri</a>
                                 </li>
                                 <li class="nav-item">
-                                  <a class="nav-link" href="<?php echo site_url('contact');?>">Kontak</a>
+                                  <a class="nav-link" href="<?php echo site_url('kontak');?>">Kontak</a>
                                 </li>
                              </ul>
                         </div>
@@ -141,7 +155,7 @@
                             <li><a href="<?php echo site_url('about');?>">Profil</a></li>
                             <li><a href="<?php echo site_url('artikel');?>">Berita </a></li>
                             <li><a href="<?php echo site_url('galeri');?>">Galeri</a></li>
-                            <li><a href="<?php echo site_url('contact');?>">Kontak</a></li>
+                            <li><a href="<?php echo site_url('kontak');?>">Kontak</a></li>
                         </ul>
                     </div>
                 </div>
@@ -165,9 +179,9 @@
                         <br>upt.skbbantul@bantulkab.go.id
                             <br> Telp/Fax : <?= $identitas->telp ?></p>
                             <ul class="footer-social-icons">
-                                <li><a href="#"><i class="fa fa-facebook fa-fb" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin fa-in" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter fa-tw" aria-hidden="true"></i></a></li>
+                                <li><a href="<?= $identitas->fb ?>"><i class="fa fa-facebook fa-fb" aria-hidden="true"></i></a></li>
+                                <li><a href=""><i class="fa fa-linkedin fa-in" aria-hidden="true"></i></a></li>
+                                <li><a href="<?= $identitas->twitter ?>"><i class="fa fa-twitter fa-tw" aria-hidden="true"></i></a></li>
                             </ul>
                         </div>
                     </div>
@@ -189,6 +203,30 @@
         <script src="<?php echo base_url().'theme/js/subscribe.js'?>"></script>
         <!-- Script JS -->
         <script src="<?php echo base_url().'theme/js/script.js'?>"></script>
+        <script src="<?php echo base_url().'theme/js/jquery.dataTables.min.js'?>"></script>
+        <script src="<?php echo base_url().'theme/js/dataTables.bootstrap4.min.js'?>"></script>
+            <script>
+              $(document).ready(function() {
+                
+                // datatables
+                $('#display').DataTable();
+
+                // JS Social Share
+                $(".sharePopup").jsSocials({
+                  showCount: true,
+            			showLabel: true,
+            			shareIn: "popup",
+            			shares: [
+            			{ share: "twitter", label: "Twitter" },
+            			{ share: "facebook", label: "Facebook" },
+            			{ share: "googleplus", label: "Google+" },
+            			{ share: "linkedin", label: "Linked In" },
+                  { share: "pinterest", label: "Pinterest" }
+            			]
+                });
+
+              });
+            </script>
     </body>
 
     </html>

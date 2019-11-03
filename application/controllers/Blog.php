@@ -68,7 +68,9 @@ class Blog extends CI_Controller{
 			$x['show_komentar']=$this->m_tulisan->show_komentar_by_tulisan_id($kode);
 			$x['category']=$this->db->get('tbl_kategori');
 			$x['populer']=$this->db->query("SELECT * FROM tbl_tulisan ORDER BY tulisan_views DESC LIMIT 5");
-			$this->load->view('depan/v_blog_detail',$x);
+			// $this->load->view('depan/v_blog_detail',$x);
+			$this->template->set('title',$x['title']);
+			$this->template->load('template','contents','depan/blog_detail',$x);
 		}else{
 			redirect('artikel');
 		}
@@ -81,9 +83,11 @@ class Blog extends CI_Controller{
 			 $x['data']=$query;
 			 $x['category']=$this->db->get('tbl_kategori');
  			 $x['populer']=$this->db->query("SELECT * FROM tbl_tulisan ORDER BY tulisan_views DESC LIMIT 5");
-			 $this->load->view('depan/v_blog',$x);
+			//  $this->load->view('depan/v_blog',$x);
+			// $this->template->set('title','Berita');
+			$this->template->load('template', 'contents' , 'depan/blog', $x);
 		 }else{
-			 echo $this->session->set_flashdata('msg','<div class="alert alert-danger">Tidak Ada artikel untuk kategori <b>'.$kategori.'</b></div>');
+			  echo $this->session->set_flashdata('msg','<div class="alert alert-danger">Tidak Ada artikel untuk kategori <b>'.$kategori.'</b></div>');
 			 redirect('artikel');
 		 }
 	}
@@ -95,7 +99,9 @@ class Blog extends CI_Controller{
 					$x['data']=$query;
 					$x['category']=$this->db->get('tbl_kategori');
   				$x['populer']=$this->db->query("SELECT * FROM tbl_tulisan ORDER BY tulisan_views DESC LIMIT 5");
-          $this->load->view('depan/v_blog',$x);
+		//   $this->load->view('depan/v_blog',$x);
+				$this->template->set('title','Berita');
+				$this->template->load('template', 'contents' , 'depan/blog', $x);
 	 		 }else{
 				 echo $this->session->set_flashdata('msg','<div class="alert alert-danger">Tidak dapat menemukan artikel dengan kata kunci <b>'.$keyword.'</b></div>');
 				 redirect('artikel');

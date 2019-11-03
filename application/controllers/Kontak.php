@@ -1,5 +1,5 @@
 <?php
-class Contact extends CI_Controller{
+class Kontak extends CI_Controller{
   function __construct(){
 		parent::__construct();
       $this->load->model('m_kontak');
