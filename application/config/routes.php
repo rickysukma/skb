@@ -55,4 +55,4 @@ $route['artikel']='blog';
 $route['artikel']='blog/index';
 $route['artikel/(:any)']='blog/detail/$1';
 $route['404_override'] = '';
-$route['translate_uri_dashes'] = FALSE;
+$route['translate_uri_dashes'] = TRUE;

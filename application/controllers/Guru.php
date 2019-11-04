@@ -42,7 +42,8 @@ class Guru extends CI_Controller{
             $this->pagination->initialize($config);
             $x['page'] =$this->pagination->create_links();
 						$x['data']=$this->m_guru->guru_perpage($offset,$limit);
-						$this->load->view('depan/v_guru',$x);
+						$this->template->set('title','Staff Kependidikan');
+						$this->template->load('template','contents','depan/guru',$x);
 	}
 
 }
