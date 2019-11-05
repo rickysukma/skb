@@ -1,20 +1,22 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.14
--- http://www.phpmyadmin.net
+-- version 4.8.5
+-- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: 09 Agu 2018 pada 10.27
--- Versi Server: 5.6.17
--- PHP Version: 5.5.12
+-- Host: 127.0.0.1:3306
+-- Waktu pembuatan: 05 Nov 2019 pada 14.39
+-- Versi server: 10.3.14-MariaDB
+-- Versi PHP: 7.3.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `db_websekolah`
@@ -26,11 +28,12 @@ SET time_zone = "+00:00";
 -- Struktur dari tabel `tbl_agenda`
 --
 
+DROP TABLE IF EXISTS `tbl_agenda`;
 CREATE TABLE IF NOT EXISTS `tbl_agenda` (
   `agenda_id` int(11) NOT NULL AUTO_INCREMENT,
   `agenda_nama` varchar(200) DEFAULT NULL,
-  `agenda_tanggal` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `agenda_deskripsi` text,
+  `agenda_tanggal` timestamp NULL DEFAULT current_timestamp(),
+  `agenda_deskripsi` text DEFAULT NULL,
   `agenda_mulai` date DEFAULT NULL,
   `agenda_selesai` date DEFAULT NULL,
   `agenda_tempat` varchar(90) DEFAULT NULL,
@@ -38,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `tbl_agenda` (
   `agenda_keterangan` varchar(200) DEFAULT NULL,
   `agenda_author` varchar(60) DEFAULT NULL,
   PRIMARY KEY (`agenda_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `tbl_agenda`
@@ -55,17 +58,18 @@ INSERT INTO `tbl_agenda` (`agenda_id`, `agenda_nama`, `agenda_tanggal`, `agenda_
 -- Struktur dari tabel `tbl_album`
 --
 
+DROP TABLE IF EXISTS `tbl_album`;
 CREATE TABLE IF NOT EXISTS `tbl_album` (
   `album_id` int(11) NOT NULL AUTO_INCREMENT,
   `album_nama` varchar(50) DEFAULT NULL,
-  `album_tanggal` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `album_tanggal` timestamp NULL DEFAULT current_timestamp(),
   `album_pengguna_id` int(11) DEFAULT NULL,
   `album_author` varchar(60) DEFAULT NULL,
-  `album_count` int(11) DEFAULT '0',
+  `album_count` int(11) DEFAULT 0,
   `album_cover` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`album_id`),
   KEY `album_pengguna_id` (`album_pengguna_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `tbl_album`
@@ -82,16 +86,17 @@ INSERT INTO `tbl_album` (`album_id`, `album_nama`, `album_tanggal`, `album_pengg
 -- Struktur dari tabel `tbl_files`
 --
 
+DROP TABLE IF EXISTS `tbl_files`;
 CREATE TABLE IF NOT EXISTS `tbl_files` (
   `file_id` int(11) NOT NULL AUTO_INCREMENT,
   `file_judul` varchar(120) DEFAULT NULL,
-  `file_deskripsi` text,
-  `file_tanggal` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `file_deskripsi` text DEFAULT NULL,
+  `file_tanggal` timestamp NULL DEFAULT current_timestamp(),
   `file_oleh` varchar(60) DEFAULT NULL,
-  `file_download` int(11) DEFAULT '0',
+  `file_download` int(11) DEFAULT 0,
   `file_data` varchar(120) DEFAULT NULL,
   PRIMARY KEY (`file_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `tbl_files`
@@ -116,10 +121,11 @@ INSERT INTO `tbl_files` (`file_id`, `file_judul`, `file_deskripsi`, `file_tangga
 -- Struktur dari tabel `tbl_galeri`
 --
 
+DROP TABLE IF EXISTS `tbl_galeri`;
 CREATE TABLE IF NOT EXISTS `tbl_galeri` (
   `galeri_id` int(11) NOT NULL AUTO_INCREMENT,
   `galeri_judul` varchar(60) DEFAULT NULL,
-  `galeri_tanggal` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `galeri_tanggal` timestamp NULL DEFAULT current_timestamp(),
   `galeri_gambar` varchar(40) DEFAULT NULL,
   `galeri_album_id` int(11) DEFAULT NULL,
   `galeri_pengguna_id` int(11) DEFAULT NULL,
@@ -127,7 +133,7 @@ CREATE TABLE IF NOT EXISTS `tbl_galeri` (
   PRIMARY KEY (`galeri_id`),
   KEY `galeri_album_id` (`galeri_album_id`),
   KEY `galeri_pengguna_id` (`galeri_pengguna_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `tbl_galeri`
@@ -156,6 +162,7 @@ INSERT INTO `tbl_galeri` (`galeri_id`, `galeri_judul`, `galeri_tanggal`, `galeri
 -- Struktur dari tabel `tbl_guru`
 --
 
+DROP TABLE IF EXISTS `tbl_guru`;
 CREATE TABLE IF NOT EXISTS `tbl_guru` (
   `guru_id` int(11) NOT NULL AUTO_INCREMENT,
   `guru_nip` varchar(30) DEFAULT NULL,
@@ -165,9 +172,9 @@ CREATE TABLE IF NOT EXISTS `tbl_guru` (
   `guru_tgl_lahir` varchar(80) DEFAULT NULL,
   `guru_mapel` varchar(120) DEFAULT NULL,
   `guru_photo` varchar(40) DEFAULT NULL,
-  `guru_tgl_input` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `guru_tgl_input` timestamp NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`guru_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `tbl_guru`
@@ -181,7 +188,37 @@ INSERT INTO `tbl_guru` (`guru_id`, `guru_nip`, `guru_nama`, `guru_jenkel`, `guru
 (5, '-', 'Yuliani Ningsih', 'P', 'Padang', '27 September 1993', 'Bahasa Indonesia', NULL, '2017-01-26 13:42:48'),
 (6, '927482658274993', 'Ari Hidayat', 'L', 'Padang', '25 September 1993', 'Bahasa Inggris', NULL, '2017-01-26 13:43:46'),
 (7, '927482658274998', 'Irma Cantika', 'P', 'Padang', '25 September 1993', 'Bahasa Inggris, IPA', '4200d2514abf45755943526b74474c16.jpg', '2017-01-26 13:45:11'),
-(8, '-', 'Ririn Febriesta', 'P', 'Padang', '27 September 1994', 'Pend. Agama Islam', NULL, '2017-01-27 04:28:23');
+(8, '-', 'Ririn Febriesta', 'P', 'Padang', '27 September 1994', 'Pend. Agama Islam', NULL, '2017-01-27 04:28:23'),
+(9, '90000000', 'Ahmad Muzaki', 'L', 'Sleman', '25 September 2019', 'Mengais rejeki', 'ed763503a3ad951a096d2c3bf3d52b5d.png', '2019-11-03 22:44:59');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tbl_identitas`
+--
+
+DROP TABLE IF EXISTS `tbl_identitas`;
+CREATE TABLE IF NOT EXISTS `tbl_identitas` (
+  `id` int(11) NOT NULL,
+  `title` varchar(250) NOT NULL,
+  `alamat` varchar(250) DEFAULT NULL,
+  `telp` varchar(250) DEFAULT NULL,
+  `email` varchar(250) DEFAULT NULL,
+  `fb` varchar(250) DEFAULT NULL,
+  `twitter` varchar(250) DEFAULT NULL,
+  `instagram` varchar(250) DEFAULT NULL,
+  `logo` varchar(250) DEFAULT NULL,
+  `visi` varchar(5000) DEFAULT NULL,
+  `misi` varchar(5000) DEFAULT NULL,
+  `tujuan` varchar(5000) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tbl_identitas`
+--
+
+INSERT INTO `tbl_identitas` (`id`, `title`, `alamat`, `telp`, `email`, `fb`, `twitter`, `instagram`, `logo`, `visi`, `misi`, `tujuan`) VALUES
+(1, 'SKB Bantul - Kab. Bantul', 'Jalan Imogiri Barat Km. 7, Semail Bangunharjo Sewon, Bantul', '(0274) 4396012', 'upt.skbbantul@bantulkab.go.id', NULL, NULL, NULL, 'assets/images/logo.png', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -189,16 +226,17 @@ INSERT INTO `tbl_guru` (`guru_id`, `guru_nip`, `guru_nama`, `guru_jenkel`, `guru
 -- Struktur dari tabel `tbl_inbox`
 --
 
+DROP TABLE IF EXISTS `tbl_inbox`;
 CREATE TABLE IF NOT EXISTS `tbl_inbox` (
   `inbox_id` int(11) NOT NULL AUTO_INCREMENT,
   `inbox_nama` varchar(40) DEFAULT NULL,
   `inbox_email` varchar(60) DEFAULT NULL,
   `inbox_kontak` varchar(20) DEFAULT NULL,
-  `inbox_pesan` text,
-  `inbox_tanggal` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `inbox_status` int(11) DEFAULT '1' COMMENT '1=Belum dilihat, 0=Telah dilihat',
+  `inbox_pesan` text DEFAULT NULL,
+  `inbox_tanggal` timestamp NULL DEFAULT current_timestamp(),
+  `inbox_status` int(11) DEFAULT 1 COMMENT '1=Belum dilihat, 0=Telah dilihat',
   PRIMARY KEY (`inbox_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `tbl_inbox`
@@ -217,12 +255,13 @@ INSERT INTO `tbl_inbox` (`inbox_id`, `inbox_nama`, `inbox_email`, `inbox_kontak`
 -- Struktur dari tabel `tbl_kategori`
 --
 
+DROP TABLE IF EXISTS `tbl_kategori`;
 CREATE TABLE IF NOT EXISTS `tbl_kategori` (
   `kategori_id` int(11) NOT NULL AUTO_INCREMENT,
   `kategori_nama` varchar(30) DEFAULT NULL,
-  `kategori_tanggal` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `kategori_tanggal` timestamp NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`kategori_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `tbl_kategori`
@@ -242,11 +281,12 @@ INSERT INTO `tbl_kategori` (`kategori_id`, `kategori_nama`, `kategori_tanggal`) 
 -- Struktur dari tabel `tbl_kelas`
 --
 
+DROP TABLE IF EXISTS `tbl_kelas`;
 CREATE TABLE IF NOT EXISTS `tbl_kelas` (
   `kelas_id` int(11) NOT NULL AUTO_INCREMENT,
   `kelas_nama` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`kelas_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `tbl_kelas`
@@ -281,18 +321,19 @@ INSERT INTO `tbl_kelas` (`kelas_id`, `kelas_nama`) VALUES
 -- Struktur dari tabel `tbl_komentar`
 --
 
+DROP TABLE IF EXISTS `tbl_komentar`;
 CREATE TABLE IF NOT EXISTS `tbl_komentar` (
   `komentar_id` int(11) NOT NULL AUTO_INCREMENT,
   `komentar_nama` varchar(30) DEFAULT NULL,
   `komentar_email` varchar(50) DEFAULT NULL,
   `komentar_isi` varchar(120) DEFAULT NULL,
-  `komentar_tanggal` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `komentar_tanggal` timestamp NULL DEFAULT current_timestamp(),
   `komentar_status` varchar(2) DEFAULT NULL,
   `komentar_tulisan_id` int(11) DEFAULT NULL,
-  `komentar_parent` int(11) DEFAULT '0',
+  `komentar_parent` int(11) DEFAULT 0,
   PRIMARY KEY (`komentar_id`),
   KEY `komentar_tulisan_id` (`komentar_tulisan_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `tbl_komentar`
@@ -301,7 +342,9 @@ CREATE TABLE IF NOT EXISTS `tbl_komentar` (
 INSERT INTO `tbl_komentar` (`komentar_id`, `komentar_nama`, `komentar_email`, `komentar_isi`, `komentar_tanggal`, `komentar_status`, `komentar_tulisan_id`, `komentar_parent`) VALUES
 (1, 'M Fikri', 'fikrifiver97@gmail.com', ' Nice Post.', '2018-08-07 15:09:07', '1', 24, 0),
 (2, 'M Fikri Setiadi', 'fikrifiver97@gmail.com', ' Awesome Post', '2018-08-07 15:14:26', '1', 24, 0),
-(3, 'Joko', 'joko@gmail.com', 'Thank you.', '2018-08-08 03:54:56', '1', 24, 1);
+(3, 'Joko', 'joko@gmail.com', 'Thank you.', '2018-08-08 03:54:56', '1', 24, 1),
+(6, 'Zain', 'ampas@yopmail.com', 'Tes aja ', '2019-11-03 22:21:42', '1', 23, 0),
+(7, 'M Fikri Setiadi', '', 'mantep gan', '2019-11-03 22:46:41', '1', 23, 6);
 
 -- --------------------------------------------------------
 
@@ -309,17 +352,18 @@ INSERT INTO `tbl_komentar` (`komentar_id`, `komentar_nama`, `komentar_email`, `k
 -- Struktur dari tabel `tbl_log_aktivitas`
 --
 
+DROP TABLE IF EXISTS `tbl_log_aktivitas`;
 CREATE TABLE IF NOT EXISTS `tbl_log_aktivitas` (
   `log_id` int(11) NOT NULL AUTO_INCREMENT,
-  `log_nama` text,
-  `log_tanggal` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `log_nama` text DEFAULT NULL,
+  `log_tanggal` timestamp NULL DEFAULT current_timestamp(),
   `log_ip` varchar(20) DEFAULT NULL,
   `log_pengguna_id` int(11) DEFAULT NULL,
-  `log_icon` blob,
+  `log_icon` blob DEFAULT NULL,
   `log_jenis_icon` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`log_id`),
   KEY `log_pengguna_id` (`log_pengguna_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -327,6 +371,7 @@ CREATE TABLE IF NOT EXISTS `tbl_log_aktivitas` (
 -- Struktur dari tabel `tbl_pengguna`
 --
 
+DROP TABLE IF EXISTS `tbl_pengguna`;
 CREATE TABLE IF NOT EXISTS `tbl_pengguna` (
   `pengguna_id` int(11) NOT NULL AUTO_INCREMENT,
   `pengguna_nama` varchar(50) DEFAULT NULL,
@@ -334,26 +379,26 @@ CREATE TABLE IF NOT EXISTS `tbl_pengguna` (
   `pengguna_jenkel` varchar(2) DEFAULT NULL,
   `pengguna_username` varchar(30) DEFAULT NULL,
   `pengguna_password` varchar(35) DEFAULT NULL,
-  `pengguna_tentang` text,
+  `pengguna_tentang` text DEFAULT NULL,
   `pengguna_email` varchar(50) DEFAULT NULL,
   `pengguna_nohp` varchar(20) DEFAULT NULL,
   `pengguna_facebook` varchar(35) DEFAULT NULL,
   `pengguna_twitter` varchar(35) DEFAULT NULL,
   `pengguna_linkdin` varchar(35) DEFAULT NULL,
   `pengguna_google_plus` varchar(35) DEFAULT NULL,
-  `pengguna_status` int(2) DEFAULT '1',
+  `pengguna_status` int(2) DEFAULT 1,
   `pengguna_level` varchar(3) DEFAULT NULL,
-  `pengguna_register` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `pengguna_register` timestamp NULL DEFAULT current_timestamp(),
   `pengguna_photo` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`pengguna_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `tbl_pengguna`
 --
 
 INSERT INTO `tbl_pengguna` (`pengguna_id`, `pengguna_nama`, `pengguna_moto`, `pengguna_jenkel`, `pengguna_username`, `pengguna_password`, `pengguna_tentang`, `pengguna_email`, `pengguna_nohp`, `pengguna_facebook`, `pengguna_twitter`, `pengguna_linkdin`, `pengguna_google_plus`, `pengguna_status`, `pengguna_level`, `pengguna_register`, `pengguna_photo`) VALUES
-(1, 'M Fikri Setiadi', 'Just do it', 'L', 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'I am a mountainner. to me mountainerring is a life', 'fikrifiver97@gmail.com', '081277159401', 'facebook.com/m_fikri_setiadi', 'twitter.com/fiver_fiver', '', '', 1, '1', '2016-09-03 06:07:55', 'db5dec647062751f2fb236b9bc3f1c54.png');
+(1, 'M Fikri Setiadi', 'Just do it', 'L', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'I am a mountainner. to me mountainerring is a life', 'fikrifiver97@gmail.com', '081277159401', 'facebook.com/m_fikri_setiadi', 'twitter.com/fiver_fiver', '', '', 1, '1', '2016-09-03 06:07:55', 'db5dec647062751f2fb236b9bc3f1c54.png');
 
 -- --------------------------------------------------------
 
@@ -361,14 +406,15 @@ INSERT INTO `tbl_pengguna` (`pengguna_id`, `pengguna_nama`, `pengguna_moto`, `pe
 -- Struktur dari tabel `tbl_pengumuman`
 --
 
+DROP TABLE IF EXISTS `tbl_pengumuman`;
 CREATE TABLE IF NOT EXISTS `tbl_pengumuman` (
   `pengumuman_id` int(11) NOT NULL AUTO_INCREMENT,
   `pengumuman_judul` varchar(150) DEFAULT NULL,
-  `pengumuman_deskripsi` text,
-  `pengumuman_tanggal` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `pengumuman_deskripsi` text DEFAULT NULL,
+  `pengumuman_tanggal` timestamp NULL DEFAULT current_timestamp(),
   `pengumuman_author` varchar(60) DEFAULT NULL,
   PRIMARY KEY (`pengumuman_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `tbl_pengumuman`
@@ -386,20 +432,30 @@ INSERT INTO `tbl_pengumuman` (`pengumuman_id`, `pengumuman_judul`, `pengumuman_d
 -- Struktur dari tabel `tbl_pengunjung`
 --
 
+DROP TABLE IF EXISTS `tbl_pengunjung`;
 CREATE TABLE IF NOT EXISTS `tbl_pengunjung` (
   `pengunjung_id` int(11) NOT NULL AUTO_INCREMENT,
-  `pengunjung_tanggal` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `pengunjung_tanggal` timestamp NULL DEFAULT current_timestamp(),
   `pengunjung_ip` varchar(40) DEFAULT NULL,
   `pengunjung_perangkat` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`pengunjung_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=931 ;
+) ENGINE=InnoDB AUTO_INCREMENT=940 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `tbl_pengunjung`
 --
 
 INSERT INTO `tbl_pengunjung` (`pengunjung_id`, `pengunjung_tanggal`, `pengunjung_ip`, `pengunjung_perangkat`) VALUES
-(930, '2018-08-09 08:04:59', '::1', 'Chrome');
+(930, '2018-08-09 08:04:59', '::1', 'Chrome'),
+(931, '2019-10-16 15:40:11', '::1', 'Firefox'),
+(932, '2019-10-17 09:01:43', '::1', 'Firefox'),
+(933, '2019-10-18 15:44:01', '::1', 'Firefox'),
+(934, '2019-10-23 01:20:04', '::1', 'Firefox'),
+(935, '2019-10-25 02:34:39', '::1', 'Firefox'),
+(936, '2019-10-31 01:20:46', '::1', 'Firefox'),
+(937, '2019-11-02 15:21:30', '::1', 'Firefox'),
+(938, '2019-11-02 17:00:00', '::1', 'Firefox'),
+(939, '2019-11-03 17:01:12', '::1', 'Firefox');
 
 -- --------------------------------------------------------
 
@@ -407,6 +463,7 @@ INSERT INTO `tbl_pengunjung` (`pengunjung_id`, `pengunjung_tanggal`, `pengunjung
 -- Struktur dari tabel `tbl_siswa`
 --
 
+DROP TABLE IF EXISTS `tbl_siswa`;
 CREATE TABLE IF NOT EXISTS `tbl_siswa` (
   `siswa_id` int(11) NOT NULL AUTO_INCREMENT,
   `siswa_nis` varchar(20) DEFAULT NULL,
@@ -415,7 +472,7 @@ CREATE TABLE IF NOT EXISTS `tbl_siswa` (
   `siswa_kelas_id` int(11) DEFAULT NULL,
   `siswa_photo` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`siswa_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `tbl_siswa`
@@ -440,14 +497,15 @@ INSERT INTO `tbl_siswa` (`siswa_id`, `siswa_nis`, `siswa_nama`, `siswa_jenkel`, 
 -- Struktur dari tabel `tbl_testimoni`
 --
 
+DROP TABLE IF EXISTS `tbl_testimoni`;
 CREATE TABLE IF NOT EXISTS `tbl_testimoni` (
   `testimoni_id` int(11) NOT NULL AUTO_INCREMENT,
   `testimoni_nama` varchar(30) DEFAULT NULL,
   `testimoni_isi` varchar(120) DEFAULT NULL,
   `testimoni_email` varchar(35) DEFAULT NULL,
-  `testimoni_tanggal` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `testimoni_tanggal` timestamp NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`testimoni_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -455,23 +513,24 @@ CREATE TABLE IF NOT EXISTS `tbl_testimoni` (
 -- Struktur dari tabel `tbl_tulisan`
 --
 
+DROP TABLE IF EXISTS `tbl_tulisan`;
 CREATE TABLE IF NOT EXISTS `tbl_tulisan` (
   `tulisan_id` int(11) NOT NULL AUTO_INCREMENT,
   `tulisan_judul` varchar(100) DEFAULT NULL,
-  `tulisan_isi` text,
-  `tulisan_tanggal` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `tulisan_isi` text DEFAULT NULL,
+  `tulisan_tanggal` timestamp NULL DEFAULT current_timestamp(),
   `tulisan_kategori_id` int(11) DEFAULT NULL,
   `tulisan_kategori_nama` varchar(30) DEFAULT NULL,
-  `tulisan_views` int(11) DEFAULT '0',
+  `tulisan_views` int(11) DEFAULT 0,
   `tulisan_gambar` varchar(40) DEFAULT NULL,
   `tulisan_pengguna_id` int(11) DEFAULT NULL,
   `tulisan_author` varchar(40) DEFAULT NULL,
-  `tulisan_img_slider` int(2) NOT NULL DEFAULT '0',
+  `tulisan_img_slider` int(2) NOT NULL DEFAULT 0,
   `tulisan_slug` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`tulisan_id`),
   KEY `tulisan_kategori_id` (`tulisan_kategori_id`),
   KEY `tulisan_pengguna_id` (`tulisan_pengguna_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=26 ;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `tbl_tulisan`
@@ -480,9 +539,10 @@ CREATE TABLE IF NOT EXISTS `tbl_tulisan` (
 INSERT INTO `tbl_tulisan` (`tulisan_id`, `tulisan_judul`, `tulisan_isi`, `tulisan_tanggal`, `tulisan_kategori_id`, `tulisan_kategori_nama`, `tulisan_views`, `tulisan_gambar`, `tulisan_pengguna_id`, `tulisan_author`, `tulisan_img_slider`, `tulisan_slug`) VALUES
 (20, 'Persiapan siswa menjelang ujian nasional', '<p>Banyak metode bejalar yang dilakukan oleh siswa untuk persiapan menghadapi ujian nasional (UN). Biantaranya mengingat dengan metode Mind Map, ataupun bejalar diluar kelas (outdoor).&nbsp; Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel.</p>\r\n', '2017-05-17 09:24:42', 1, 'Pendidikan', 27, '0a927c6d34dc5560b72f053313f14638.jpg', 1, 'M Fikri Setiadi', 0, 'persiapan-siswa-menjelang-ujian-nasional'),
 (22, 'Prestasi membangga dari siswa MSchool', '<p>Prestasi dan penghargaan merupakan trigger (pemicu) semangat belajar siswa. Ada banyak prestasi yang telah diraih oleh siswa m-sekolah. Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel.</p>\r\n\r\n<p>Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel.</p>\r\n\r\n<p>Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel.</p>\r\n\r\n<p>Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel.</p>\r\n\r\n<p>Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel.</p>\r\n\r\n<p>Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel.</p>\r\n', '2017-05-17 09:38:21', 6, 'Prestasi', 1, 'a59aa487ab2e3b57b2fcf75063b67575.jpg', 1, 'M Fikri Setiadi', 0, 'prestasi-membangga-dari-siswa-mschool'),
-(23, 'Pelaksanaan Ujian Nasional MSchool', '<p>Pelaksanaan UN (Ujian Nasional) di sekolah M-Sekolah berlangsung tentram dan damai. Terlihat ketenangan terpancar diwajah siswa berprestasi.&nbsp; Ini adalah sampel artikel Ini adalah sampel artikel&nbsp; Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel.</p>\r\n\r\n<p>Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel.</p>\r\n\r\n<p>Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel.</p>\r\n\r\n<p>Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel.</p>\r\n\r\n<p>Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel.</p>\r\n', '2017-05-17 09:41:30', 1, 'Pendidikan', 3, '12bfb1953df800c59835a2796f8c6619.jpg', 1, 'M Fikri Setiadi', 0, 'pelaksanaan-ujian-nasional-mschool'),
-(24, 'Proses belajar mengajar MSchool', '<p>Proses belajar mengajar di sekolah m-sekolah berlangsung menyenangkan. Didukung oleh instruktur yang fun dengan metode mengajar yang tidak biasa. Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel.</p>\r\n\r\n<p>Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel a Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel artikel Ini adalah sampel artikel Ini adalah sampel artikel.</p>\r\n\r\n<p>Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel .</p>\r\n\r\n<p>Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel.</p>\r\n\r\n<p>Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel.</p>\r\n', '2017-05-17 09:46:29', 1, 'Pendidikan', 162, 'ea114dc1ec5275560a5ef3238fd04722.jpg', 1, 'M Fikri Setiadi', 0, 'proses-belajar-mengajar-mschool'),
+(23, 'Pelaksanaan Ujian Nasional MSchool', '<p>Pelaksanaan UN (Ujian Nasional) di sekolah M-Sekolah berlangsung tentram dan damai. Terlihat ketenangan terpancar diwajah siswa berprestasi.&nbsp; Ini adalah sampel artikel Ini adalah sampel artikel&nbsp; Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel.</p>\r\n\r\n<p>Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel.</p>\r\n\r\n<p>Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel.</p>\r\n\r\n<p>Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel.</p>\r\n\r\n<p>Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel.</p>\r\n', '2017-05-17 09:41:30', 1, 'Pendidikan', 8, '12bfb1953df800c59835a2796f8c6619.jpg', 1, 'M Fikri Setiadi', 0, 'pelaksanaan-ujian-nasional-mschool'),
+(24, 'Proses belajar mengajar MSchool', '<p>Proses belajar mengajar di sekolah m-sekolah berlangsung menyenangkan. Didukung oleh instruktur yang fun dengan metode mengajar yang tidak biasa. Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel.</p>\r\n\r\n<p>Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel a Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel artikel Ini adalah sampel artikel Ini adalah sampel artikel.</p>\r\n\r\n<p>Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel .</p>\r\n\r\n<p>Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel.</p>\r\n\r\n<p>Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel.</p>\r\n', '2017-05-17 09:46:29', 1, 'Pendidikan', 167, 'ea114dc1ec5275560a5ef3238fd04722.jpg', 1, 'M Fikri Setiadi', 0, 'proses-belajar-mengajar-mschool'),
 (25, 'iPhone 8 Baru Mengungkapkan Fitur Mengecewakan', '<p>Apple CEO Tim Cook delivers the opening keynote address the 2017 Apple.</p>\r\n\r\n<p><br />\r\nSudah lama sekali sejak Apple mampu menyimpan kejutan nyata dari beledu digital dan mengungkapkan &#39;satu hal&#39; yang sebenarnya selama sebuah keynote. Fase desain dan prototyping yang panjang, ditambah dengan rantai pasokan yang diperluas, telah menghasilkan garis manufaktur yang bocor.<br />\r\n<br />\r\nTariklah permintaan yang tak terpuaskan dari si geekerati dan Anda tidak akan pernah bisa menyimpan rahasianya ... bahkan jika penonton akan berpura-pura bahwa segala sesuatu yang dikatakan Tim Cook adalah sebuah wahyu.<br />\r\n<br />\r\nSemuanya di tampilkan untuk portofolio iPhone baru, meskipun jika kita jujur ??tidak ada hal baru yang bisa dilihat. Ini hanya Tim Cook dan timnya yang membuat model tahun lalu &#39;sedikit lebih baik&#39; dan mengajukan konsumen proposisi yang sama seperti setiap produsen smartphone lainnya.<br />\r\n<br />\r\nMungkin aku berharap terlalu banyak dari Apple. Pengulangan Timey dari mimpi Silicon Valley tidak dibangun dengan risiko, mendorong amplop, atau bereksperimen dengan bentuk atau fungsinya. Bagaimana Tim Cook bisa mendorong inovasi ketika begitu banyak kekaisarannya dibangun di seputar kebutuhan akan penjualan siklis iPhone yang terjamin? Jika penjualan smartphone turun, maka yayasan Cupertino akan berada dalam bahaya.<br />\r\n<br />\r\nJawaban Apple untuk ini adalah iPhone 8. Sementara iPhone 7S dan iPhone 7S Plus menjaga harapan, iPhone 8 bisa bereksperimen dengan bentuk, harga, dan kekuatan. Ini adalah handset yang akan mendorong batas teknologi Apple dengan layar OLED yang cerah dan jelas di bawah kaca melengkung yang membentuk bagian luarnya. Inilah smartphone yang membawa kekuatan magis wireless charging ke ekosistem iOS dan akan menawarkan pengenalan wajah untuk keamanan.<br />\r\n<br />\r\nYang semua terdengar hebat tapi itu satu set poin peluru yang bisa diterapkan ke banyak handset Android terkemuka yang ada di pasaran saat ini. Bahkan dengan andalannya yang maju untuk tahun 2017, Apple melakukan sedikit lebih banyak daripada mengenalkan teknologi yang ada ke portofolio iOS.<br />\r\n<br />\r\nItu tidak terlihat seperti ini beberapa bulan yang lalu. Fitur yang diduga dikeluarkan oleh Apple dari iPhone 8 memamerkan beberapa pemikiran terbaru tentang perangkat mobile, termasuk pengisian daya nirkabel jarak jauh dan sensor biometrik tertanam di bawah layar kaca. Ini perlahan-lahan telah terbantahkan oleh industri rumahan dan desas-desus, sampai-sampai kita cukup tahu apa yang terjadi dari iPhone 8.<br />\r\n<br />\r\nTentu saja iPhone 8 (dan lebih dari kemungkinan iPhone 7S dan 7S Plus) akan mendapat keuntungan dari perubahan pada konstruksi interior. Akan ada pencantuman iOS 11 dan integrasi perangkat lunak yang ketat ke perangkat keras. Akan ada anggukan Apple untuk kesederhanaan di UI dan aplikasi pihak ketiga akan segera menghadirkan fitur lanjutan kepada pengguna rata-rata.<br />\r\n<br />\r\nIni bukan perubahan sepele, tapi yang menyoroti ini adalah menjelaskan bagaimana sosis dibuat. Mereka adalah rakit tweak untuk paket yang sama. Anda bisa menambahkan kancing diamante ke gaun Anda, mengganti lapisannya, dan mengeluarkan pinggulnya karena tahun-tahun yang lewat, tapi pakaiannya tetap sama seperti yang orang lihat berkali-kali. Itu cukup bagi bisnis Apple untuk terus melakukannya dengan baik dan membuat pemegang saham tetap bahagia, namun Anda tidak dapat terus kembali ke bidang yang sama dan berharap untuk tetap berada di puncak permainan smartphone. Sesuatu harus diberikan.<br />\r\n<br />\r\nPortofolio Apple 2017 membajak bidang yang sama persis dengan tahun-tahun sebelumnya. Tulang punggung penjualan akan terdiri dari iPhone 7S dan iPhone 7S Plus yang berulang-ulang saat Tim Cook kembali menanam benih di alur yang sama persis seperti model sebelumnya. IPhone 8 dapat diluncurkan tepat waktu, namun stok akan sulit didapat dan Apple akan, sekali lagi, tidak merilis angka penjualan. Ini akan menjadi hal baru yang menarik dan berkilau, tapi mari kita panggil apa adanya.</p>\r\n\r\n<p>Tim Cook akan menyilangkan jari-jarinya sehingga cukup banyak orang yang senang bisa &#39;membeli iPhone lain&#39; dan terus menggelontorkannya tanpa melihat persaingan. IPhone 8 adalah Apple yang bermain mengejar kemajuan teknologi kompetisi, dengan harapan tidak ada yang memperhatikan bahwa iPhone Baru Kaisar tidak semudah yang terlihat.</p>\r\n', '2018-08-08 13:26:08', 5, 'Penelitian', 3, 'a0b99616241c9aded7f2a02661798d98.jpg', 1, 'M Fikri Setiadi', 0, 'iphone-8-baru-mengungkapkan-fitur-mengecewakan');
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
