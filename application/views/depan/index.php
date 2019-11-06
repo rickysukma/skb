@@ -113,7 +113,7 @@
                     <div class="col-sm-3"> <img src="<?php echo base_url().'theme/images/announcement-icon.png'?>" class="img-fluid" alt="event-img"></div><!-- // end .col-sm-3 -->
                     <div class="col-sm-9"> <h3><a href="<?php echo site_url('pengumuman');?>"><?php echo $row->pengumuman_judul;?></a></h3>
                       <span><?php echo $row->tanggal;?></span>
-                      <p><?php echo $row->pengumuman_deskripsi;?></p>
+                      <p><?php echo substr($row->pengumuman_deskripsi,0,50);?>....</p>
 
                     </div><!-- // end .col-sm-7 -->
                 </div><!-- // end .row -->
@@ -132,7 +132,7 @@
                         </div>
                         <div class="date-description">
                             <h3><a href="<?php echo site_url('agenda');?>"><?php echo $row->agenda_nama;?></a></h3>
-                            <p><?php echo $row->agenda_deskripsi;?></p>
+                            <p><?php echo substr($row->agenda_deskripsi,0,50);?>....</p>
                             <hr class="event_line">
                         </div>
                         <?php endforeach;?>

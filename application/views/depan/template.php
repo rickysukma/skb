@@ -25,6 +25,14 @@
      <!--Social Share-->
      <link href="<?php echo base_url().'theme/css/jssocials.css'?>" rel="stylesheet">
     <link href="<?php echo base_url().'theme/css/jssocials-theme-flat.css'?>" rel="stylesheet">
+    <!-- Magnific Popup CSS -->
+    <link rel="stylesheet" href="<?php echo base_url().'theme/css/magnific-popup.css'?>">
+    <!-- Image Hover CSS -->
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url().'theme/css/normalize.css'?>" />
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url().'theme/css/set2.css'?>" />
+
+  <!-- Masonry Gallery -->
+  <link href="<?php echo base_url().'theme/css/animated-masonry-gallery.css'?>" rel="stylesheet" type="text/css" />
     <style>
     	.sharePopup{
     		font-size: 11px;
@@ -91,7 +99,7 @@
                                     <div class="dropdown-menu" aria-labelledby="profilDropdown">
                                     <a class="dropdown-item" href="#">Sejarah</a>
                                     <a class="dropdown-item" href="#">Visi & Misi</a>
-                                    <a class="dropdown-item" href="#">Staff Kependidikan</a>
+                                    <a class="dropdown-item" href="<?= site_url('guru'); ?>">Staff Kependidikan</a>
                                     <!-- <div class="dropdown-divider"></div> -->
                                     <!-- <a class="dropdown-item" href="#">Something else here</a> -->
                                 </div>
@@ -199,6 +207,12 @@
         <script src="<?php echo base_url().'theme/js/owl.carousel.min.js'?>"></script>
         <script src="<?php echo base_url().'theme/js/validate.js'?>"></script>
         <script src="<?php echo base_url().'theme/js/tweetie.min.js'?>"></script>
+
+        <script src="<?php echo base_url().'theme/js/jquery-ui-1.10.4.min.js'?>"></script>
+        <script src="<?php echo base_url().'theme/js/jquery.isotope.min.js'?>"></script>
+        <script src="<?php echo base_url().'theme/js/animated-masonry-gallery.js'?>"></script>
+        <!-- Magnific popup JS -->
+        <script src="<?php echo base_url().'theme/js/jquery.magnific-popup.js'?>"></script>
         <!-- Subscribe -->
         <script src="<?php echo base_url().'theme/js/subscribe.js'?>"></script>
         <!-- Script JS -->

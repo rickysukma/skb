@@ -5,6 +5,7 @@ class visi_misi extends CI_Controller{
 
 	}
 	function index(){
-		$this->load->view('depan/v_visi_misi');
+		$this->template->set('title','Visi & Misi');
+		$this->template->load('template','contents','depan/visi-misi');
 	}
 }
