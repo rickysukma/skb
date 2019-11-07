@@ -7,58 +7,140 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <title>404 Page Not Found</title>
 <style type="text/css">
 
-::selection { background-color: #E13300; color: white; }
-::-moz-selection { background-color: #E13300; color: white; }
+@import url(https://fonts.googleapis.com/css?family=Gilda+Display);
 
-body {
-	background-color: #fff;
-	margin: 40px;
-	font: 13px/20px normal Helvetica, Arial, sans-serif;
-	color: #4F5155;
+html {
+  background: radial-gradient(#000, #111);
+  color: white;
+  overflow: hidden;
+  height: 100%;
+  user-select: none;
 }
 
-a {
-	color: #003399;
-	background-color: transparent;
-	font-weight: normal;
+.static {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  top: -100px;
+  opacity: 0.05;
+  z-index: 230;
+  user-select: none;
+  user-drag: none;
 }
 
-h1 {
-	color: #444;
-	background-color: transparent;
-	border-bottom: 1px solid #D0D0D0;
-	font-size: 19px;
-	font-weight: normal;
-	margin: 0 0 14px 0;
-	padding: 14px 15px 10px 15px;
+.error {
+  text-align: center;
+  font-family: 'Gilda Display', serif;
+  font-size: 12px;
+  font-style: italic;
+  text-align: center;
+  width: 100px;
+  height: 60px;
+  line-height: 60px;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -60px;
+  right: 0;
+  animation: noise 2s linear infinite;
+  overflow: default;
 }
 
-code {
-	font-family: Consolas, Monaco, Courier New, Courier, monospace;
-	font-size: 12px;
-	background-color: #f9f9f9;
-	border: 1px solid #D0D0D0;
-	color: #002166;
-	display: block;
-	margin: 14px 0 14px 0;
-	padding: 12px 10px 12px 10px;
+.error:after {
+  content: '404';
+  font-family: 'Gilda Display', serif;
+  font-size: 100px;
+  font-style: italic;
+  text-align: center;
+  width: 150px;
+  height: 60px;
+  line-height: 60px;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  color: blue;
+  animation: noise-1 .2s linear infinite;
 }
 
-#container {
-	margin: 10px;
-	border: 1px solid #D0D0D0;
-	box-shadow: 0 0 8px #D0D0D0;
+.info {
+  text-align: center;
+  font-family: 'Gilda Display', serif;
+  font-size: 15px;
+  font-style: italic;
+  text-align: center;
+  width: 200px;
+  height: 60px;
+  line-height: 60px;
+  margin: auto;
+  position: absolute;
+  top: 140px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  animation: noise-3 1s linear infinite;
 }
 
-p {
-	margin: 12px 15px 12px 15px;
+.error:before {
+  content: '404';
+  font-family: 'Gilda Display', serif;
+  font-size: 100px;
+  font-style: italic;
+  text-align: center;
+  width: 100px;
+  height: 60px;
+  line-height: 60px;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  color: red;
+  animation: noise-2 .2s linear infinite;
+}
+
+@keyframes noise-1 {
+  0%, 20%, 40%, 60%, 70%, 90% {opacity: 0;}
+  10% {opacity: .1;}
+  50% {opacity: .5; left: -6px;}
+  80% {opacity: .3;}
+  100% {opacity: .6; left: 2px;}
+}
+
+@keyframes noise-2 {
+  0%, 20%, 40%, 60%, 70%, 90% {opacity: 0;}
+  10% {opacity: .1;}
+  50% {opacity: .5; left: 6px;}
+  80% {opacity: .3;}
+  100% {opacity: .6; left: -2px;}
+}
+
+@keyframes noise {
+  0%, 3%, 5%, 42%, 44%, 100% {opacity: 1; transform: scaleY(1);}  
+  4.3% {opacity: 1; transform: scaleY(1.7);}
+  43% {opacity: 1; transform: scaleX(1.5);}
+}
+
+@keyframes noise-3 {
+  0%,3%,5%,42%,44%,100% {opacity: 1; transform: scaleY(1);}
+  4.3% {opacity: 1; transform: scaleY(4);}
+  43% {opacity: 1; transform: scaleX(10) rotate(60deg);}
 }
 </style>
 </head>
 <body>
-	<div id="container">
-		<h1><?php echo $heading; ?></h1>
-		<?php echo $message; ?>
-	</div>
+	<div class="error"><?php echo $heading ?></div>
+<br /><br />
+<span class="info"><?php echo $message ?>
+</span>
+<img src="http://images2.layoutsparks.com/1/160030/too-much-tv-static.gif" class="static" />
 </body>
 </html>

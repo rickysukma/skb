@@ -97,8 +97,8 @@
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" id="profilDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Profil</a>
                                     <div class="dropdown-menu" aria-labelledby="profilDropdown">
-                                    <a class="dropdown-item" href="#">Sejarah</a>
-                                    <a class="dropdown-item" href="#">Visi & Misi</a>
+                                    <a class="dropdown-item" href="<?= site_url('sejarah'); ?>">Sejarah</a>
+                                    <a class="dropdown-item" href="<?= site_url('visi-misi'); ?>">Visi & Misi</a>
                                     <a class="dropdown-item" href="<?= site_url('guru'); ?>">Staff Kependidikan</a>
                                     <!-- <div class="dropdown-divider"></div> -->
                                     <!-- <a class="dropdown-item" href="#">Something else here</a> -->
@@ -108,7 +108,7 @@
                                     <a class="nav-link" href="<?php echo site_url('guru');?>">Guru</a>
                                 </li> -->
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" id="programDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#" href="#">Program</a>
+                                    <a class="nav-link dropdown-toggle" id="programDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#" href="#">Program Belajar</a>
                                     <div class="dropdown-menu" aria-labelledby="profilDropdown">
                                         <a class="dropdown-item" href="#">Paud Terpadu</a>
                                         <a class="dropdown-item" href="#">Kesetaraan</a>
