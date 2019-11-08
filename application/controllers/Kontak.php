@@ -20,6 +20,6 @@ class Kontak extends CI_Controller{
       $pesan=htmlspecialchars($this->input->post('xmessage',TRUE),ENT_QUOTES);
       $this->m_kontak->kirim_pesan($nama,$email,$kontak,$pesan);
       echo $this->session->set_flashdata('msg','<p><strong> NB: </strong> Terima Kasih Telah Menghubungi Kami.</p>');
-      redirect('contact');
+      redirect('kontak');
   }
 }

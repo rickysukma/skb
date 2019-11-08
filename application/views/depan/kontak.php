@@ -14,7 +14,7 @@
                         <div class="col-xs-12 col-sm-12 col-md-6 contact-option">
                             <div class="contact-option_rsp">
                                 <h3>Tinggalkan Pesan</h3>
-                                <form action="<?php echo site_url('contact/kirim_pesan');?>" method="post">
+                                <form action="<?php echo site_url('kontak/kirim_pesan');?>" method="post">
                                     <div class="form-group">
                                         <input type="text" class="form-control" placeholder="Name" name="xnama" required>
                                     </div>
