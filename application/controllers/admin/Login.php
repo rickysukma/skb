@@ -3,9 +3,11 @@ class Login extends CI_Controller{
     function __construct(){
         parent:: __construct();
         $this->load->model('m_login');
+        $this->load->model('m_identitas');
     }
     function index(){
-        $this->load->view('admin/v_login');
+        $data['identitas'] = $this->m_identitas->data();
+        $this->load->view('admin/v_login',$data);
     }
     function auth(){
         $username=strip_tags(str_replace("'", "", $this->input->post('username')));

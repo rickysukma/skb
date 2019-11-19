@@ -89,6 +89,7 @@
                     <!-- // end .course-img-wrap -->
                     <a href="<?php echo site_url('artikel/'.$row->tulisan_slug);?>" class="course-box-content">
                         <h3 style="text-align:center;"><?php echo $row->tulisan_judul;?></h3>
+                        <!-- <div class="col-md-6"><h6 style="text-align:center;"><?php echo $row->tulisan_tanggal;?></h6></div> -->
                     </a>
                 </div>
             </div>

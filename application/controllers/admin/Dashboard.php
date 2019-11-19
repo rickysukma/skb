@@ -11,7 +11,8 @@ class Dashboard extends CI_Controller{
 	function index(){
 		if($this->session->userdata('akses')=='1'){
 			$x['visitor'] = $this->m_pengunjung->statistik_pengujung();
-			$this->load->view('admin/v_dashboard',$x);
+			$this->template->set('title','Dashboard');
+			$this->template->admin('admin/dashboard',$x);
 		}else{
 			redirect('administrator');
 		}

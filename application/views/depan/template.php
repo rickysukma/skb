@@ -108,7 +108,7 @@
                                     <a class="nav-link" href="<?php echo site_url('guru');?>">Guru</a>
                                 </li> -->
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" id="programDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#" href="#">Program Belajar</a>
+                                    <a class="nav-link dropdown-toggle" id="programDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="<?= base_url('program-belajar') ?>">Program Belajar</a>
                                     <div class="dropdown-menu" aria-labelledby="profilDropdown">
                                         <a class="dropdown-item" href="#">Paud Terpadu</a>
                                         <a class="dropdown-item" href="#">Kesetaraan</a>
@@ -182,9 +182,9 @@
                 <div class="col-md-3">
                     <div class="address">
                         <h3>Hubungi Kami</h3>
-                        <p><span>Alamat: </span> Jalan Imogiri Barat Km. 7, Semail Bangunharjo Sewon, Bantul</p>
-                        <p>Email : skbbantul@yahoo.com
-                        <br>upt.skbbantul@bantulkab.go.id
+                        <p><span>Alamat: </span> <?= $identitas->alamat ?></p>
+                        <p>Email : <?= $identitas->email ?>
+                        <!-- <br>upt.skbbantul@bantulkab.go.id -->
                             <br> Telp/Fax : <?= $identitas->telp ?></p>
                             <ul class="footer-social-icons">
                                 <li><a href="<?= $identitas->fb ?>"><i class="fa fa-facebook fa-fb" aria-hidden="true"></i></a></li>
