@@ -115,7 +115,7 @@
             <div class="box-header with-border">
               <h3 class="box-title">Posting Populer</h3>
 
-              <table class="table">
+              <table class="table" id="example1">
               <?php
                   $query=$this->db->query("SELECT * FROM tbl_tulisan ORDER BY tulisan_views DESC");
                   foreach ($query->result_array() as $i) :

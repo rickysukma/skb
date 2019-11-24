@@ -13,7 +13,8 @@ class Pengumuman extends CI_Controller{
 
 	function index(){
 		$x['data']=$this->m_pengumuman->get_all_pengumuman();
-		$this->load->view('admin/v_pengumuman',$x);
+		$this->template->set('title','Pengumuman');
+		$this->template->admin('admin/pengumuman',$x);
 	}
 
 	function simpan_pengumuman(){

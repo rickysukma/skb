@@ -16,7 +16,8 @@ class Files extends CI_Controller{
 	function index(){
 		
 		$x['data']=$this->m_files->get_all_files();
-		$this->load->view('admin/v_files',$x);
+		$this->template->set('title','Download');
+		$this->template->admin('admin/files',$x);
 	}
 
 	function download(){

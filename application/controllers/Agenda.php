@@ -43,7 +43,7 @@ class Agenda extends CI_Controller{
 		$x['data']=$this->m_agenda->agenda_perpage($offset,$limit);
 		// $this->load->view('depan/v_agenda',$x);
 		$this->template->set('title','Agenda');
-		$this->template->load('template','contents','depan/agenda',$x);
+		$this->template->admin('admin/agenda',$x);
 	}
 
 }
