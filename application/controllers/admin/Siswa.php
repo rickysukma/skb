@@ -16,7 +16,8 @@ class Siswa extends CI_Controller{
 	function index(){
 		$x['kelas']=$this->m_kelas->get_all_kelas();
 		$x['data']=$this->m_siswa->get_all_siswa();
-		$this->load->view('admin/v_siswa',$x);
+		$this->template->set('title','Siswa');
+		$this->template->admin('admin/siswa',$x);
 	}
 	
 	function simpan_siswa(){

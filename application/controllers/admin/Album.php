@@ -14,7 +14,8 @@ class Album extends CI_Controller{
 
 	function index(){
 		$x['data']=$this->m_album->get_all_album();
-		$this->load->view('admin/v_album',$x);
+		$this->template->set('title','Album');
+		$this->template->admin('admin/album',$x);
 	}
 	
 	function simpan_album(){

@@ -17,7 +17,8 @@ class Galeri extends CI_Controller{
 		
 		$x['data']=$this->m_galeri->get_all_galeri();
 		$x['alb']=$this->m_album->get_all_album();
-		$this->load->view('admin/v_galeri',$x);
+		$this->template->set('title','Galeri');
+		$this->template->admin('admin/galeri',$x);
 	}
 	
 	function simpan_galeri(){

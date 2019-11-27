@@ -12,7 +12,8 @@ class Inbox extends CI_Controller{
 	function index(){
 		$this->m_kontak->update_status_kontak();
 		$x['data']=$this->m_kontak->get_all_inbox();
-		$this->load->view('admin/v_inbox',$x);
+		$this->template->set('title','Inbox');
+		$this->template->admin('admin/inbox',$x);
 	}
 
 	function hapus_inbox(){
