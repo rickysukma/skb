@@ -9,11 +9,13 @@ class Home extends CI_Controller{
 		$this->load->model('m_agenda');
 		$this->load->model('m_files');
 		$this->load->model('m_pengunjung');
+		$this->load->model('m_kelompok');
 		$this->m_pengunjung->count_visitor();
 	}
 	function index(){
 			$data['berita']=$this->m_tulisan->get_berita_home();
 			$data['pengumuman']=$this->m_pengumuman->get_pengumuman_home();
+			$data['kelompok'] = $this->db->get('tbl_kelompok')->result();
 			$data['agenda']=$this->m_agenda->get_agenda_home();
 			$data['tot_guru']=$this->db->get('tbl_guru')->num_rows();
 			$data['tot_siswa']=$this->db->get('tbl_siswa')->num_rows();

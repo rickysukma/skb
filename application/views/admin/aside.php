@@ -65,6 +65,7 @@
             </span>
           </a>
         </li>
+
         <li class="treeview">
           <a href="#">
             <i class="fa fa-camera"></i>
@@ -86,6 +87,20 @@
               <small class="label pull-right"></small>
             </span>
           </a>
+        </li>
+
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-book"></i>
+            <span>Program Belajar</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="<?php echo base_url().'admin/kelompok'?>"><i class="fa fa-clone"></i> Kelompok Kegiatan</a></li>
+            <li><a href="<?php echo base_url().'admin/program'?>"><i class="fa fa-book"></i> Program Belajar</a></li>
+          </ul>
         </li>
 
         <li class="treeview">

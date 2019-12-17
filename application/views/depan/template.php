@@ -110,10 +110,10 @@
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" id="programDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="<?= base_url('program-belajar') ?>">Program Belajar</a>
                                     <div class="dropdown-menu" aria-labelledby="profilDropdown">
-                                        <a class="dropdown-item" href="#">Paud Terpadu</a>
-                                        <a class="dropdown-item" href="#">Kesetaraan</a>
-                                        <a class="dropdown-item" href="#">Kursus</a>
-                                        <a class="dropdown-item" href="#">Uji Kompetensi</a>
+                                    <?php foreach($kelompok as $k){
+                                        echo '<a class="dropdown-item" href="'.site_url('kelompok/').$k->slug.'">'.$k->nama_kelompok.'</a>';
+                                    }
+                                    ?>
                                     </div>
                                 </li>
                                 <li class="nav-item">
