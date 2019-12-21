@@ -389,7 +389,20 @@ $("#filefoto").change(function() {
     $(".timepicker").timepicker({
       showInputs: false
     });
+    
   });
 </script>
+ <script type="text/javascript">
+    $(function()
+    {
+      $('#gratis').change(function()
+      {
+        if ($(this).is(':checked')) {
+           // Do something...
+           alert('You can rock now...');
+        };
+      });
+    });
+  </script>
 </body>
 </html>

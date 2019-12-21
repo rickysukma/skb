@@ -7,6 +7,14 @@ class Template {
 		{
 			$this->CI =& get_instance();
 			$this->CI->load->model('m_identitas');
+			$this->CI->load->model('m_kelompok');
+		}
+
+		function rupiah($angka){
+	
+			$hasil_rupiah = "Rp " . number_format($angka,2,',','.');
+			return $hasil_rupiah;
+		 
 		}
 
 		function set($content_area, $value)
@@ -18,6 +26,7 @@ class Template {
 		{               
 			// $this->CI =& get_instance();
 			$view_data['identitas'] = $this->CI->m_identitas->data();
+			$view_data['kelompok'] = $this->CI->m_kelompok->get_all_kelompok();
 			$this->set($name , $this->CI->load->view($view, $view_data, TRUE));
 			$this->CI->load->view('depan/'.$template, $this->template_data);
 		}

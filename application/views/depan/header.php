@@ -56,6 +56,7 @@
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" id="programDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#" href="#">Program</a>
                                     <div class="dropdown-menu" aria-labelledby="profilDropdown">
+                                    <a class="dropdown-item" href="<?php echo base_url() ?>program">Semua Program Belajar</a>
                                     <?php foreach($kelompok as $k){
                                         echo '<a class="dropdown-item" href="'.site_url('kelompok/').$k['slug'].'">'.$k['nama_kelompok'].'</a>';
                                     }

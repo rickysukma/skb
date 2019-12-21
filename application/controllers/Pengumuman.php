@@ -44,7 +44,7 @@ class Pengumuman extends CI_Controller{
 						$x['data']=$this->m_pengumuman->pengumuman_perpage($offset,$limit);
 						// $this->load->view('depan/v_pengumuman',$x);
 			$this->template->set('title', 'Pengumunan');
-			$this->template->admin('template', 'contents' , 'depan/pengumuman', $x);
+			$this->template->load('template', 'contents' , 'depan/pengumuman', $x);
 	}
 
 }
