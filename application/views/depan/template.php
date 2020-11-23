@@ -53,8 +53,8 @@
 
 <body>
     <!--============================= HEADER =============================-->
-<div class="header-topbar">
-        <div class="container">
+    <div class="header-topbar">
+        <!-- <div class="container">
             <div class="row">
                 <div class="col-xs-6 col-sm-8 col-md-10">
                     <div class="header-top_address">
@@ -75,6 +75,24 @@
                 <div class="col-xs-6 col-sm-4 col-md-2">
                     <div class="header-top_login mr-sm-3">
                         <a href="<?php echo site_url('kontak');?>">Hubungi Kami</a>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2 text-white">
+                    Info Pengumuman : 
+                </div>
+                <div class="col-xs-6 col-sm-8 col-md-10">
+                    <div class="header-top_address">
+                    <marquee class="marquee">
+                        <?php
+                            foreach($pengumuman->result() as $peng){
+                                echo "<span class='ml-4 mr-4 text-white'><a href='".site_url('pengumuman')."'>".$peng->pengumuman_judul."</a></span>";
+                            }
+                        ?>
+                    </marquee>
                     </div>
                 </div>
             </div>
@@ -99,7 +117,8 @@
                                     <div class="dropdown-menu" aria-labelledby="profilDropdown">
                                     <a class="dropdown-item" href="<?= site_url('sejarah'); ?>">Sejarah</a>
                                     <a class="dropdown-item" href="<?= site_url('visi-misi'); ?>">Visi & Misi</a>
-                                    <a class="dropdown-item" href="<?= site_url('guru'); ?>">Staff Kependidikan</a>
+                                    <a class="dropdown-item" href="<?= site_url('guru'); ?>">Staff Pendidik</a>
+                                    <a class="dropdown-item" href="<?= site_url('strukturorganisasi'); ?>">Struktur Organisasi</a>
                                     <!-- <div class="dropdown-divider"></div> -->
                                     <!-- <a class="dropdown-item" href="#">Something else here</a> -->
                                 </div>
@@ -173,7 +192,7 @@
                       <h3>Akademik</h3>
                       <ul>
                           <!-- <li><a href="<?php echo site_url('guru');?>">Guru</a></li> -->
-                          <li><a href="<?php echo site_url('siswa');?>">Program Pelaksanaan </a></li>
+                          <li><a href="<?php echo site_url('program');?>">Program Pelaksanaan </a></li>
                           <li><a href="<?php echo site_url('pengumuman');?>">Pengumuman</a></li>
                           <li><a href="<?php echo site_url('agenda');?>">Agenda</a></li>
                           <li><a href="<?php echo site_url('download');?>">Download</a></li>
@@ -242,6 +261,14 @@
                 });
 
               });
+
+              $(function() {
+                $('.marquee').mouseover(function() {
+                    $(this).attr('scrollamount',0);
+                }).mouseout(function() {
+                    $(this).attr('scrollamount',5);
+                });
+            });
             </script>
     </body>
 

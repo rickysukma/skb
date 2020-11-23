@@ -27,7 +27,7 @@
                       <h3>Akademik</h3>
                       <ul>
                           <!-- <li><a href="<?php echo site_url('guru');?>">Guru</a></li> -->
-                          <li><a href="<?php echo site_url('siswa');?>">Program Pelaksanaan </a></li>
+                          <li><a href="<?php echo site_url('program');?>">Program Pelaksanaan </a></li>
                           <li><a href="<?php echo site_url('pengumuman');?>">Pengumuman</a></li>
                           <li><a href="<?php echo site_url('agenda');?>">Agenda</a></li>
                           <li><a href="<?php echo site_url('download');?>">Download</a></li>

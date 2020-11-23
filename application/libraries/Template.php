@@ -8,6 +8,7 @@ class Template {
 			$this->CI =& get_instance();
 			$this->CI->load->model('m_identitas');
 			$this->CI->load->model('m_kelompok');
+			$this->CI->load->model('m_pengumuman');
 		}
 
 		function rupiah($angka){
@@ -25,6 +26,7 @@ class Template {
 		function load($template = '', $name ='', $view = '' , $view_data = array(), $return = FALSE)
 		{               
 			// $this->CI =& get_instance();
+			$view_data['pengumuman'] = $this->CI->m_pengumuman->get_pengumuman_home();
 			$view_data['identitas'] = $this->CI->m_identitas->data();
 			$view_data['kelompok'] = $this->CI->m_kelompok->get_all_kelompok();
 			$this->set($name , $this->CI->load->view($view, $view_data, TRUE));
@@ -36,6 +38,7 @@ class Template {
 			// $this->CI =& get_instance();
 			$name ='contents';
 			$view_data['identitas'] = $this->CI->m_identitas->data();
+			$view_data['pengumuman'] = $this->CI->m_pengumuman->get_pengumuman_home();
 			$this->set($name , $this->CI->load->view($view, $view_data, TRUE));
 			$this->CI->load->view('admin/template', $this->template_data);
 		}

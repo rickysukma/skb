@@ -8,7 +8,7 @@
             </ol>
             <div class="carousel-inner" role="listbox">
                 <div class="carousel-item active">
-                    <img class="d-block" src="<?php echo base_url().'theme/images/slider_4.JPG'?>" alt="First slide">
+                    <img height="755px" class="img-responsive d-block" src="<?php echo base_url().'theme/images/slider_4.JPG'?>" alt="First slide">
                     <div class="carousel-caption d-md-block">
                         <div class="slider_title">
                             <h1>Bepikir Kreaftif &amp; Inovatif</h1>
@@ -20,7 +20,7 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block" src="<?php echo base_url().'theme/images/slider_5.JPG'?>" alt="Second slide">
+                    <img height="755px" class="img-responsive d-block" src="<?php echo base_url().'theme/images/slider_5.JPG'?>" alt="Second slide">
                     <div class="carousel-caption d-md-block">
                         <div class="slider_title">
                             <h1>Guru Bekualitas Tinggi</h1>
@@ -32,7 +32,7 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block" src="<?php echo base_url().'theme/images/slider_6.JPG'?>" alt="Third slide">
+                    <img height="755px" class="img-responsive d-block" src="<?php echo base_url().'theme/images/slider_6.JPG'?>" alt="Third slide">
                     <div class="carousel-caption d-md-block">
                         <div class="slider_title">
                             <h1>Proses Belajar Interatif</h1>
@@ -56,7 +56,7 @@
     </div>
 </section>
 <!--============================= ABOUT =============================-->
-<section class="clearfix about about-style2">
+<!-- <section class="clearfix about about-style2">
     <div class="container">
         <div class="row">
             <div class="col-md-8">
@@ -69,15 +69,15 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 <!--//END ABOUT -->
 <!--============================= OUR COURSES =============================-->
 <section class="our_courses">
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <h2>Artikel Terbaru</h2>
-            </div>
+        <div class="col-md-12">
+            <h2 class="text-center">Artikel Terbaru</h2>
+        </div>
         </div>
         <div class="row">
           <?php foreach ($berita->result() as $row) :?>
@@ -107,40 +107,25 @@
 <section class="event">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6">
-                <div class="event-img2">
+            <div class="col-md-12">
+                <h2 class="text-center pb-5">Pengumuman</h2>
+            </div>
+            <div class="col-lg-12">
+                <div class="row text-center">
                 <?php foreach ($pengumuman->result() as $row) :?>
-                <div class="row">
-                    <div class="col-sm-3"> <img src="<?php echo base_url().'theme/images/announcement-icon.png'?>" class="img-fluid" alt="event-img"></div><!-- // end .col-sm-3 -->
-                    <div class="col-sm-9"> <h3><a href="<?php echo site_url('pengumuman');?>"><?php echo $row->pengumuman_judul;?></a></h3>
-                      <span><?php echo $row->tanggal;?></span>
-                      <p><?php echo substr($row->pengumuman_deskripsi,0,50);?>....</p>
+                    <!-- <div class="col-sm-3"> <img src="<?php echo base_url().'theme/images/announcement-icon.png'?>" class="img-fluid" alt="event-img"></div>// end .col-sm-3 -->
+                    <div class="col-sm-4 mb-4"> <h6><a href="<?php echo site_url('pengumuman');?>"> <?php echo $row->pengumuman_judul;?></a></h6>
+                      <!-- <p><?php echo substr($row->pengumuman_deskripsi,0,50);?>....</p> -->
+                      <span style="font-size:13px"><?php echo $row->tanggal;?></span>
 
                     </div><!-- // end .col-sm-7 -->
-                </div><!-- // end .row -->
                 <?php endforeach;?>
-                </div>
+                </div><!-- // end .row -->
             </div>
-            <div class="col-lg-6">
-                <div class="row">
-                    <div class="col-md-12">
-                      <?php foreach ($agenda->result() as $row):?>
-                        <div class="event_date">
-                            <div class="event-date-wrap">
-                                <p><?php echo date("d", strtotime($row->agenda_tanggal));?></p>
-                                <span><?php echo date("M. y", strtotime($row->agenda_tanggal));?></span>
-                            </div>
-                        </div>
-                        <div class="date-description">
-                            <h3><a href="<?php echo site_url('agenda');?>"><?php echo $row->agenda_nama;?></a></h3>
-                            <p><?php echo substr($row->agenda_deskripsi,0,50);?>....</p>
-                            <hr class="event_line">
-                        </div>
-                        <?php endforeach;?>
-
-                    </div>
-                </div>
-
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <a href="<?php echo site_url('artikel');?>" class="btn btn-default btn-courses">View More</a>
             </div>
         </div>
     </div>
